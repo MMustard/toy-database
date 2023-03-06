@@ -1,0 +1,4 @@
+﻿  main.cpp
+C:\Users\Administrator\source\repos\demo\demo\base.h(192,1): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\Users\Administrator\source\repos\demo\demo\Manager.h(183): warning C4715: “MangerMethodFactory::get”: 不是所有的控件路径都返回值
+  demo.vcxproj -> C:\Users\Administrator\source\repos\demo\x64\Debug\demo.exe

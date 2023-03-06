@@ -1,0 +1,167 @@
+空白数据项只支持最后连续空白
+由于数据存储以及以空格分隔的特性决定（用；就可以空白与不空白数据混合存储）
+//增加属性
+    Utils::attribute_adder(".\\config.conf", "person", "b");
+    DataBase db(".\\config.conf");
+    //增
+    //void add(std::string pool_name, std::vector<std::pair<Attribute, std::string>> args)
+    DataBase db(".\\config.conf");
+    db.add();
+    db.save();
+    //删
+    //void remove(std::string pool_name, std::vector<Base*> _bases)
+    DataBase db(".\\config.conf");
+    db.remove();
+    db.save();
+    //改
+    //void modify(std::string pool_name, std::vector<Base*> _bases, Attribute attr, std::string val)
+    DataBase db(".\\config.conf");
+    db.modify();
+    db.save();
+    //查
+    //std::vector<Base*> find(std::string pool_name, const std::vector<std::pair<Attribute, std::string>>& condtions)
+    DataBase db(".\\config.conf");
+    db.find();
+    db.save();
+
+    //显示
+    //void show_all(std::string pool_name)
+    db.show_all();
+
+    auto& p = db.getBasePool("person");
+    p.show_all();
+    p.add(
+        {
+            {"id", "2"},
+            {"name","2"},
+            {"job","2"},
+            {"gender", "2"},
+            {"b", "44888"}
+        }
+    );
+    auto& c = db.getBasePool("classroom");
+    db.save();
+    c.show_all();
+   
+    //DataBase db(".\\config.conf");
+    //db.show_table();
+    //auto& p = db.getBasePool("person");
+    //auto& b = p.newBase();
+    //b.set("id", "1");
+    //b.set("name", "sfx");
+    //b.set("job", "haha");
+    //b.set("gender", "gc");
+    //p.show_all();
+    //db.add("person", {
+    //    {"id", "2"},
+    //    {"name", "gc"}
+    //    });
+    //p.show_all();
+    //p.add({
+    //    { "id", "3" },
+    //    { "name", "maomao" }
+    //    }
+    //);
+    //p.show_all();
+    //db.save();
+
+
+
+    //	if (order[0] == "SELECT") {
+	//		if (order[1] == "*") {
+	//			std::string poolname = order[3];
+	//			std::vector<std::pair<Attribute, std::string>> condtions;
+	//			for (int i = 4;i < order.size();i += 2) {
+	//				condtions.push_back({ order[i], order[i + 1] });
+	//			}
+	//			
+	//			auto find_result = db.find(poolname, condtions);
+	//			for (auto&& resultptr : find_result) {
+	//				for (auto&& [key, value] : resultptr->attributes)
+	//					std::cout << key << ":" << value << " ";
+	//				std::cout << std::endl;
+	//			}
+	//			std::cout << std::endl;
+	//		}
+	//		else {
+	//			std::string poolname1 = order[2];
+	//			std::string poolname2;
+	//			std::string new_attr;
+	//			std::vector<std::pair<Attribute, std::string>> condtions1;
+	//			for (int i = 3;i < order.size();i += 2) {
+	//				condtions1.push_back({ order[i], order[i + 1] });
+	//				if (order[i + 2] == ";") {
+	//					poolname2 = order[i + 3];
+	//					new_attr = order[i + 4];
+	//					break;
+	//				}
+	//			}
+	//			std::vector<Base*> find_result1 = db.find(poolname1, condtions1);//此处假设vector中有唯一值
+	//			std::vector<std::pair<Attribute, std::string>> condtions2;
+	//			condtions2.push_back({ "id", (find_result1[0]->attributes)["id"] });
+	//			std::vector<Base*> find_result2 = db.find(poolname2, condtions2);//此处假设vector中有唯一值
+	//			std::cout << new_attr << " attribute of table " << poolname1 << " element in table " << poolname2 << " is " << (find_result2[0]->attributes)[new_attr] << std::endl;
+	//		}
+	//	}
+	//	else if (order[0] == "INSERT"){
+	//		std::string poolname = order[2];
+	//		std::vector<std::pair<Attribute, std::string>> args;
+	//		for (int i = 3;i < order.size();i += 2) {
+	//			args.push_back({ order[i], order[i + 1] });
+	//		}
+	//		db.add(poolname, args);
+	//		db.save();
+	//	}
+	//	else if (order[0] == "DELETE") {
+	//		////删
+	//		////void remove(std::string pool_name, std::vector<Base*> _bases)
+	//		//DataBase db(".\\config.conf");
+	//		//db.remove();
+	//		//db.save();
+	//		std::string poolname = order[2];
+	//		std::vector<std::pair<Attribute, std::string>> condtions;
+	//		for (int i = 3;i < order.size();i += 2) {
+	//			condtions.push_back({ order[i], order[i + 1]});
+	//		}
+	//		db.remove(poolname, condtions);
+	//		db.save();
+	//	}
+	//	else if (order[0] == "UPDATE") {
+	//		////改
+	//		////void modify(std::string pool_name, std::vector<Base*> _bases, Attribute attr, std::string val)
+	//		//DataBase db(".\\config.conf");
+	//		//db.modify();
+	//		//db.save();
+	//		std::string poolname = order[2];
+	//		std::vector<std::pair<Attribute, std::string>> condtions;
+	//		Attribute attr;
+	//		std::string val;
+	//		for (int i = 3;i < order.size();i += 2) {
+	//			condtions.push_back({ order[i], order[i + 1] });
+	//			if (order[i + 2] == "NEWVALUE") {
+	//				attr = order[i + 3];
+	//				val = order[i + 4];
+	//				break;
+	//			}
+	//		}
+	//		db.modify(poolname, condtions, attr, val);
+	//		db.save();
+	//	}
+	//	else if (order[0] == "SHOW") {
+	//		if (order[1] == "CREATE") {
+	//			std::string poolname = order[2];
+	//			db.show_all(poolname);
+	//		}
+	//		else {
+	//			for (auto&& [poolname, basepool] : db.bases) {
+	//				db.show_all(poolname);
+	//			}
+	//		}
+	//	}
+	//	else if (order[0] == "ADD") {
+	//		////增加属性
+	//		//Utils::attribute_adder(".\\config.conf", "person", "b");
+	//		std::string poolname = order[2];
+	//		std::string newattri = order[3];
+	//		Utils::attribute_adder(".\\config.conf", poolname, newattri);
+	//	}

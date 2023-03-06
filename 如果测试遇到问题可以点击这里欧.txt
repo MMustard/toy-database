@@ -1,0 +1,32 @@
+SELECT * FROM person
+SELECT * FROM person id 1
+SELECT * FROM person id 1 name sfx
+
+INSERT INTO person id 4
+INSERT INTO person id 4 name jn
+
+ADD FROM person zxc
+
+DELETE FROM person id 5
+
+UPDATE FROM person id 3 NEWVALUE a 5
+
+SELECT FROM person name sfx ; classroom name
+
+SHOW DATABASES
+SHOW CREATE person
+
+HELP
+
+exit()
+
+注意config文件和表文件的格式
+有的文件末尾空行不能删
+每行末尾不能有空格
+因为以空格和换行符进行分割（想改成";"分割，但好麻烦）
+
+以上在我的电脑上测试均正确欧
+
+本数据库没有错误处理，一律进行异常抛出=n=（毫无健壮性，因为越写越多，cc嘲笑我在写大作业
+
+用VS 2022写的，如果要在别的编译器上运行，有空加个cmake或许
